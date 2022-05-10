@@ -56,7 +56,6 @@ Avec les propriétés et actions suivantes :
   >* points de vie
   >* points d'attaque
   >* point de mana : chiffre qui sera aléatoirement imposé entre les suivants 7 , 9 ou 11.
-
 - Actions :
   >* defense
   >* attaque

@@ -53,16 +53,52 @@ class Guerrier extends Personnage{
     }
 }
 
+let persoGuerrier = new Guerrier("", 0, 0, 0);
+
 class Mage extends Personnage{
     constructor(nom, pointVie, pointAttaque, pointMana){
         super(nom, pointVie, pointAttaque);
         this.pointMana = pointMana;
     }
 }
+//Attribution aléatoire des point de mana
+let manaChiffre = [7, 9, 11];
+let manaAleatoire = manaChiffre[Math.floor(Math.random()*manaChiffre.length)];
+
+let persoMage = new Mage("", 0, 0, 0);
+persoMage.pointMana = manaAleatoire;
 
 class Archer extends Personnage{
     constructor(nom, pointVie, pointAttaque, fleche){
         super(nom, pointVie, pointAttaque);
         this.fleche = fleche;
     }
+}
+//Attribution des fleches de manière aléatoire
+let nombreFleche = Math.floor(Math.random()*(11-7))+7;
+
+let persoArcher = new Archer("", 0, 0, 0);
+persoArcher.fleche = nombreFleche
+
+function hero() {
+    alert("Êtes-vous prêt à initialiser vos 3 héros?")
+    persoGuerrier.nom = prompt("Veillez indiquer le nom de votre guerrier");
+    persoMage.nom = prompt("Veillez indiquer le nom de votre mage");
+    persoArcher.nom = prompt("Veillez indiquer le nom de votre archer");
+    alert("Maintenant vous allez attribuer les points de vie à chacun de vos héros. Attention vous avez un total de 60 points de vie à partager");
+    let totalPointVie = persoGuerrier.pointVie + persoArcher.pointVie + persoMage.pointVie
+    let totalPointAttaque = persoGuerrier.pointVie + persoArcher.pointVie + persoMage.pointVie
+    do {
+        persoGuerrier.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoGuerrier.nom}?`);
+        persoMage.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoMage.nom}?`);
+        persoArcher.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoArcher.nom}?`);
+    }
+    while (totalPointAttaque == 60);
+    alert("Passons aux points d'attaque, attention vous avez un total de 60 points d'attaque à partager");
+    do {
+        persoGuerrier.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoGuerrier.nom}?`);
+        persoMage.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoMage.nom}?`);
+        persoArcher.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoArcher.nom}?`);
+    }
+    while (totalPointAttaque == 60);
 }
