@@ -46,13 +46,13 @@ let enigmeBoss = ["Je suis quelque chose qui t'appartient mais que les gens util
 //Tirage au sort d'une énigme
 let enigmeAleatoire = enigmeBoss[Math.floor(Math.random()*enigmeBoss.length)];
 
+//Création des Héros
 class Guerrier extends Personnage{
     constructor(nom, pointVie, pointAttaque, pointRage){
         super(nom, pointVie, pointAttaque);
         this.pointRage = pointRage;
     }
 }
-
 let persoGuerrier = new Guerrier("", 0, 0, 0);
 
 class Mage extends Personnage{
@@ -85,20 +85,26 @@ function hero() {
     persoGuerrier.nom = prompt("Veillez indiquer le nom de votre guerrier");
     persoMage.nom = prompt("Veillez indiquer le nom de votre mage");
     persoArcher.nom = prompt("Veillez indiquer le nom de votre archer");
-    alert("Maintenant vous allez attribuer les points de vie à chacun de vos héros. Attention vous avez un total de 60 points de vie à partager");
-    let totalPointVie = persoGuerrier.pointVie + persoArcher.pointVie + persoMage.pointVie
-    let totalPointAttaque = persoGuerrier.pointVie + persoArcher.pointVie + persoMage.pointVie
+    alert("Maintenant vous allez attribuer les points de vie à chacun de vos héros. Attention vous avez un total de 60 points de vie à partager. Tant qu'ils ne seront pas complètement partagés, vous ne pourrez pas continuer!");
+    let totalPointVie;
+    let totalPointAttaque;
     do {
         persoGuerrier.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoGuerrier.nom}?`);
         persoMage.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoMage.nom}?`);
         persoArcher.pointVie = +prompt(`Combien de point de vie souhaitez-vous attribuer à ${persoArcher.nom}?`);
+        totalPointVie = persoGuerrier.pointVie + persoArcher.pointVie + persoMage.pointVie
     }
-    while (totalPointAttaque == 60);
-    alert("Passons aux points d'attaque, attention vous avez un total de 60 points d'attaque à partager");
+    while (totalPointVie !== 60);
+    alert("Passons aux points d'attaque, attention vous avez un total de 60 points d'attaque à partager. Tant qu'ils ne seront pas complètement partagés, vous ne pourrez pas continuer!");
     do {
         persoGuerrier.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoGuerrier.nom}?`);
         persoMage.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoMage.nom}?`);
         persoArcher.pointAttaque = +prompt(`Combien de point d'attaque souhaitez-vous attribuer à ${persoArcher.nom}?`);
+        totalPointAttaque = persoGuerrier.pointAttaque + persoArcher.pointAttaque + persoMage.pointAttaque
     }
-    while (totalPointAttaque == 60);
+    while (totalPointAttaque !== 60);
+    console.log(persoArcher);
+    console.log(persoGuerrier);
+    console.log(persoMage);
 }
+// hero()
